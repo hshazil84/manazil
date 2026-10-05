@@ -6,12 +6,16 @@ import { CardText } from './CardText';
 
 const speeds = ['0.75×', '1.0×', '1.25×', '1.5×'];
 
+// Fade the phone out toward its bottom edge, and blur it more the lower it goes.
+const fade = 'linear-gradient(to bottom, #000 36%, rgba(0,0,0,0.5) 60%, transparent 79%)';
+const blurRamp = 'linear-gradient(to bottom, transparent 0%, #000 65%)';
+
 export function MushafCard() {
   const [speed, setSpeed] = useState(1);
   const [playing, setPlaying] = useState(true);
 
   return (
-    <div className="card relative h-full min-h-[560px] overflow-hidden bg-gradient-to-br from-white via-white to-mint-bg p-7 sm:p-9">
+    <div className="card relative h-full min-h-[700px] overflow-hidden sm:min-h-[560px] bg-gradient-to-br from-white via-white to-mint-bg p-7 sm:p-9">
       <div className="relative z-20 flex h-full flex-col justify-between gap-8">
         <CardText className="max-w-[19rem] sm:max-w-[17.5rem]" label="Mushaf" title="Read it, hear it, at your pace.">
           Uthmani or IndoPak script, with Dhivehi and English translations. Pick a reciter and change the speed without changing the pitch.
@@ -60,21 +64,31 @@ export function MushafCard() {
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-40px' }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute -bottom-32 right-4 z-10 hidden w-[300px] rotate-[4deg] sm:block lg:-bottom-40 lg:right-4 lg:w-[360px]"
-      >
-        <Image
-          src="/img/onboarding_verse.webp"
-          alt="The Mushaf reader showing Taa-Haa with Arabic, Dhivehi and English"
-          width={800}
-          height={1461}
-          className="h-auto w-full"
-        />
-      </motion.div>
+      {/* The phone. Its lower part is blurred and faded out, so it sinks into the card behind the player. */}
+      <div className="pointer-events-none absolute left-1/2 top-[290px] z-10 w-[250px] -translate-x-1/2 sm:left-auto sm:right-4 sm:top-auto sm:-bottom-32 sm:w-[300px] sm:translate-x-0 lg:-bottom-40 lg:w-[360px]">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="rotate-[4deg]"
+        >
+          <div className="relative" style={{ WebkitMaskImage: fade, maskImage: fade }}>
+            <Image
+              src="/img/onboarding_verse.webp"
+              alt="The Mushaf reader showing Taa-Haa with Arabic, Dhivehi and English"
+              width={800}
+              height={1461}
+              className="h-auto w-full"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-[62%] backdrop-blur-[6px]"
+              style={{ WebkitMaskImage: blurRamp, maskImage: blurRamp }}
+            />
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 }
