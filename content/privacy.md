@@ -3,7 +3,7 @@
 Last updated: 4 October 2026
 
 ## Who we are
-Manazil is a Quran app for Maldivian Muslims, published by Hasan Shazil, Malé, Maldives. Contact: hshazil@gmail.com.
+Manazil is a Quran, prayer times and dhikr app, published by Hasan Shazil, Malé, Maldives. Contact: hshazil@gmail.com.
 
 ## The short version
 - You do not need an account. Manazil never asks for your email or phone number.

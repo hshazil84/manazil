@@ -23,7 +23,7 @@ const arabic = localFont({
   display: 'swap',
 });
 
-const title = 'Manazil: Quran app for the Maldives';
+const title = 'Manazil: Quran, Dhikr and prayer times';
 const description =
   'The Quran, recitation, prayer times for every island, Qibla and reminders. Free, with no account and no ads.';
 

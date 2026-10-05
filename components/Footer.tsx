@@ -11,7 +11,7 @@ export function Footer() {
             <span className="font-serif text-[22px] leading-none">Manazil</span>
           </div>
           <p className="mt-3 text-[14px] leading-relaxed text-ink/60">
-            A Quran app for Maldivian Muslims. Published by Hasan Shazil, Malé, Maldives.
+            Quran, prayer times and dhikr in one app. Published by Hasan Shazil, Malé, Maldives.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-x-14 gap-y-3 text-[14px] sm:grid-cols-3">
