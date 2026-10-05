@@ -28,11 +28,19 @@ export function FinderCard() {
   return (
     <div className="card grid h-full gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_1fr] lg:items-center">
       {/* The app's drifting colour fields, across the whole card */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px] [-webkit-mask-image:-webkit-radial-gradient(white,black)] [mask-image:radial-gradient(white,black)] bg-[#fdfaf3]">
-        <div className="absolute -right-32 -top-36 h-[320px] w-[320px] rounded-full bg-[#F2D58A]/60 blur-3xl" />
-        <div className="absolute -left-28 top-1/3 h-[340px] w-[340px] rounded-full bg-[#9FDCC0]/55 blur-3xl" />
-        <div className="absolute -bottom-28 right-1/4 h-[300px] w-[360px] rounded-full bg-[#F6C9A8]/45 blur-3xl" />
-      </div>
+      {/* Plain radial gradients on one box: no blur layers, so the rounded corners clip every browser the same way */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[27px]"
+        style={{
+          backgroundColor: '#fdfaf3',
+          backgroundImage: [
+            'radial-gradient(circle 250px at calc(100% - 30px) 10px, rgba(242,213,138,0.62), rgba(242,213,138,0) 100%)',
+            'radial-gradient(circle 260px at 50px calc(33% + 150px), rgba(159,220,192,0.58), rgba(159,220,192,0) 100%)',
+            'radial-gradient(circle 240px at calc(75% - 150px) calc(100% - 30px), rgba(246,201,168,0.48), rgba(246,201,168,0) 100%)',
+          ].join(','),
+        }}
+      />
       <CardText label="Verse Finder" title="Recite a few words. Find the verse." className="relative">
         Tap the orb and recite. Manazil works out which verse it is and opens it. It asks before the first recording, and needs the internet.
       </CardText>

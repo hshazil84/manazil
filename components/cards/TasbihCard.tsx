@@ -20,6 +20,9 @@ const R = SIZE / 2 - 16;
 type Progress = { count: number; target: number; rounds: number };
 type Ripple = { id: number; x: number; y: number; big: boolean };
 
+const glow = (rgb: string, a: number) =>
+  `radial-gradient(closest-side, rgba(${rgb},${a}), rgba(${rgb},0))`;
+
 export function TasbihCard() {
   const [zi, setZi] = useState(1);
   const [prog, setProg] = useState<Record<string, Progress>>(() =>
@@ -70,22 +73,28 @@ export function TasbihCard() {
   return (
     <div className="card flex h-full flex-col bg-[#f6f8f3] p-6 sm:p-7">
       {/* The app's drifting colour fields; they swell on every tap */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px] [-webkit-mask-image:-webkit-radial-gradient(white,black)] [mask-image:radial-gradient(white,black)]">
+      {/* Radial gradients instead of blurred blobs: the card's own rounded box clips them, in every browser */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[27px]">
         <motion.div
           key={`a${pulse}`}
           initial={{ scale: 1.12 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="absolute -right-20 -top-24 h-[300px] w-[300px] rounded-full bg-[#F2D58A]/75 blur-3xl"
+          className="absolute -right-[150px] -top-[166px] h-[440px] w-[440px]"
+          style={{ background: glow('242,213,138', 0.78) }}
         />
         <motion.div
           key={`b${pulse}`}
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="absolute -left-24 top-1/3 h-[300px] w-[300px] rounded-full bg-[#9FDCC0]/60 blur-3xl"
+          className="absolute -left-[166px] top-[calc(33.333%-70px)] h-[440px] w-[440px]"
+          style={{ background: glow('159,220,192', 0.62) }}
         />
-        <div className="absolute -bottom-24 right-0 h-[280px] w-[300px] rounded-full bg-[#F6C9A8]/50 blur-3xl" />
+        <div
+          className="absolute -bottom-[166px] -right-[60px] h-[420px] w-[420px]"
+          style={{ background: glow('246,201,168', 0.52) }}
+        />
         <AnimatePresence>
           {flash && (
             <motion.div
@@ -93,7 +102,8 @@ export function TasbihCard() {
               animate={{ opacity: 0, scale: 1.3 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.9 }}
-              className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#F2D58A]/70 blur-3xl"
+              className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2"
+              style={{ background: glow('242,213,138', 0.75) }}
             />
           )}
         </AnimatePresence>
