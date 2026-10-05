@@ -28,10 +28,10 @@ const description =
   'The Quran, recitation, prayer times for every island, Qibla and reminders. Free, with no account and no ads.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manazil.mv'),
+  metadataBase: new URL('https://www.manazilapp.com'),
   title: { default: title, template: '%s | Manazil' },
   description,
-  openGraph: { title, description, url: 'https://manazil.mv', siteName: 'Manazil', type: 'website' },
+  openGraph: { title, description, url: 'https://www.manazilapp.com', siteName: 'Manazil', type: 'website' },
   twitter: { card: 'summary_large_image', title, description },
 };
 

@@ -106,7 +106,7 @@ export default function SiteContent() {
 
   return (
     <>
-      <PageHead title="Site content" sub="What visitors see on manazil.mv. Changes appear within about a minute." />
+      <PageHead title="Site content" sub="What visitors see on manazilapp.com. Changes appear within about a minute." />
 
       <Panel>
         <div className="flex items-center justify-between gap-4">

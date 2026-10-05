@@ -1,6 +1,6 @@
 # Manazil website
 
-Landing page for the Manazil app at manazil.mv. Next.js 14, Tailwind CSS and Framer Motion.
+Landing page for the Manazil app at manazilapp.com. Next.js 14, Tailwind CSS and Framer Motion.
 
 ```
 npm install

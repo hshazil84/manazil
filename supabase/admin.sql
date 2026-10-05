@@ -1,4 +1,4 @@
--- Manazil admin: tables and access rules for manazil.mv/admin.
+-- Manazil admin: tables and access rules for www.manazilapp.com/admin.
 --
 -- Run once in the Supabase dashboard: SQL Editor > New query > paste > Run.
 -- It is safe to run again. Run occasions.sql and hijri_months.sql first (they
@@ -9,7 +9,7 @@
 --      a strong password (tick "Auto confirm user").
 --   2. Copy that user's UID and run:
 --        insert into public.admins (user_id) values ('PASTE-UID-HERE');
---   3. Sign in at manazil.mv/admin.
+--   3. Sign in at www.manazilapp.com/admin.
 -- Anyone else who signs up is not an admin and can change nothing.
 
 -- ---------------------------------------------------------------- admins
