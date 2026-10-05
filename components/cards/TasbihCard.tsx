@@ -70,7 +70,7 @@ export function TasbihCard() {
   return (
     <div className="card flex h-full flex-col bg-[#f6f8f3] p-6 sm:p-7">
       {/* The app's drifting colour fields; they swell on every tap */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px] [-webkit-mask-image:-webkit-radial-gradient(white,black)] [mask-image:radial-gradient(white,black)]">
         <motion.div
           key={`a${pulse}`}
           initial={{ scale: 1.12 }}

@@ -28,7 +28,7 @@ export function FinderCard() {
   return (
     <div className="card grid h-full gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_1fr] lg:items-center">
       {/* The app's drifting colour fields, across the whole card */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#fdfaf3]">
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden rounded-[28px] [-webkit-mask-image:-webkit-radial-gradient(white,black)] [mask-image:radial-gradient(white,black)] bg-[#fdfaf3]">
         <div className="absolute -right-32 -top-36 h-[320px] w-[320px] rounded-full bg-[#F2D58A]/60 blur-3xl" />
         <div className="absolute -left-28 top-1/3 h-[340px] w-[340px] rounded-full bg-[#9FDCC0]/55 blur-3xl" />
         <div className="absolute -bottom-28 right-1/4 h-[300px] w-[360px] rounded-full bg-[#F6C9A8]/45 blur-3xl" />
