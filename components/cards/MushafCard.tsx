@@ -12,13 +12,13 @@ export function MushafCard() {
 
   return (
     <div className="card relative h-full min-h-[560px] overflow-hidden bg-gradient-to-br from-white via-white to-mint-bg p-7 sm:p-9">
-      <div className="relative z-10 flex h-full max-w-[19rem] flex-col justify-between gap-8 sm:max-w-sm">
-        <CardText label="Mushaf" title="Read it, hear it, at your pace.">
+      <div className="relative z-20 flex h-full flex-col justify-between gap-8">
+        <CardText className="max-w-[19rem] sm:max-w-[17.5rem]" label="Mushaf" title="Read it, hear it, at your pace.">
           Uthmani or IndoPak script, with Dhivehi and English translations. Pick a reciter and change the speed without changing the pitch.
         </CardText>
 
-        {/* working mini player */}
-        <div className="rounded-[20px] bg-white p-3.5 shadow-card ring-1 ring-ink/5">
+        {/* working mini player, floating over the phone */}
+        <div className="w-full max-w-[19rem] rounded-[22px] bg-white/95 p-3.5 shadow-float ring-1 ring-ink/5 backdrop-blur sm:max-w-[27rem] lg:max-w-[31rem]">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setPlaying((p) => !p)}
@@ -65,14 +65,14 @@ export function MushafCard() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-40px' }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-none absolute -bottom-20 -right-8 hidden w-[270px] rotate-[5deg] sm:block lg:right-2 lg:w-[310px]"
+        className="pointer-events-none absolute -bottom-32 right-4 z-10 hidden w-[300px] rotate-[4deg] sm:block lg:-bottom-40 lg:right-4 lg:w-[360px]"
       >
         <Image
           src="/img/onboarding_verse.webp"
           alt="The Mushaf reader showing Taa-Haa with Arabic, Dhivehi and English"
           width={800}
           height={1461}
-          className="h-auto w-full drop-shadow-[0_24px_30px_rgba(22,36,31,0.25)]"
+          className="h-auto w-full"
         />
       </motion.div>
     </div>
