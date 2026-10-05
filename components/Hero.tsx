@@ -43,7 +43,7 @@ export function Hero({ links }: { links?: StoreLinks }) {
             className="rise mt-4 font-serif text-[44px] leading-[1.04] tracking-tight sm:text-[58px] lg:text-[68px]"
             style={rise(0.05, 0.5, 14)}
           >
-            The Quran, made for the Maldives.
+            Your companion for Quran, Dhikr, and reflection
           </h1>
           <p className="rise mt-6 max-w-md text-[18px] leading-relaxed text-ink/65" style={rise(0.12, 0.5, 12)}>
             Read and listen to the Quran with Dhivehi and English translations. Prayer times for every island, a Qibla compass and gentle reminders. Free, with no account and no ads.
