@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAdmin } from '@/components/admin/AdminGate';
 import { Badge, Btn, Empty, Field, PageHead, Panel, errText, inputCls, useToast } from '@/components/admin/ui';
+import { DatePicker } from '@/components/admin/DatePicker';
 import { addDays, fmtDate, maleToday } from '@/lib/admin/time';
 import hadithData from '@/lib/admin/data/hadith.json';
 import hisnData from '@/lib/admin/data/hisn.json';
@@ -142,7 +143,7 @@ export default function Daily() {
       />
 
       <Panel>
-        <div className="mb-4 flex gap-1.5 overflow-x-auto pb-1">
+        <div className="no-scrollbar mb-4 flex gap-1.5 overflow-x-auto">
           {strip.map((d) => {
             const set = (rows ?? []).filter((r) => r.show_on === d);
             const on = d === date;
@@ -163,7 +164,7 @@ export default function Daily() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field label="Date"><input type="date" min={today} className={inputCls} value={date} onChange={(e) => e.target.value && setDate(e.target.value)} /></Field>
+          <Field label="Date"><DatePicker min={today} value={date} onChange={(d) => d && setDate(d)} /></Field>
           <Field label="Pin a">
             <div className="flex rounded-xl bg-ink/5 p-1">
               {KINDS.map((k) => (

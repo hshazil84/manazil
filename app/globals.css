@@ -64,3 +64,7 @@ body {
   font-kerning: none;
   font-feature-settings: 'kern' 0, 'tnum';
 }
+
+/* Scrolls as normal, but without the scrollbar. */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

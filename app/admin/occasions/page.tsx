@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useAdmin } from '@/components/admin/AdminGate';
 import { Badge, Btn, Empty, Field, Modal, PageHead, Panel, Toggle, errText, inputCls, useToast } from '@/components/admin/ui';
+import { DatePicker } from '@/components/admin/DatePicker';
 import { fmtMale, maleInput, maleISO } from '@/lib/admin/time';
 
 type Occ = { id: string; starts_at: string; title: string; body: string; route: string | null; active: boolean };
@@ -133,7 +134,7 @@ export default function Occasions() {
         {draft && (
           <div className="space-y-4">
             <Field label="When (Malé time)" hint="The moment the reminder appears. Saved with the Maldives offset (+05:00).">
-              <input type="datetime-local" className={inputCls} value={draft.when} onChange={(e) => setDraft({ ...draft, when: e.target.value })} />
+              <DatePicker time value={draft.when} onChange={(when) => setDraft({ ...draft, when })} />
             </Field>
             <Field label="Title">
               <input className={inputCls} value={draft.title} maxLength={60} placeholder="Eid Mubarak" onChange={(e) => setDraft({ ...draft, title: e.target.value })} />
