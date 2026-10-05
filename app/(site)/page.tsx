@@ -2,14 +2,18 @@ import { Hero } from '@/components/Hero';
 import { Features } from '@/components/Features';
 import { Trust } from '@/components/Trust';
 import { Cta } from '@/components/Cta';
+import { getStoreLinks } from '@/lib/content';
 
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  const links = await getStoreLinks();
   return (
     <>
-      <Hero />
+      <Hero links={links} />
       <Features />
       <Trust />
-      <Cta />
+      <Cta links={links} />
     </>
   );
 }

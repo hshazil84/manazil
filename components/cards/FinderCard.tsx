@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CardText } from './CardText';
+import { AppOrb } from './AppOrb';
 
 const bars = [0.35, 0.7, 0.5, 1, 0.6, 0.85, 0.4, 0.75, 0.45];
 
@@ -23,13 +24,20 @@ export function FinderCard() {
     return () => clearTimeout(t);
   }, []);
 
+  const energy = step === 1 ? 1 : step === 2 ? 0.6 : 0.2;
   return (
     <div className="card grid h-full gap-8 p-7 sm:p-9 lg:grid-cols-[1fr_1fr] lg:items-center">
-      <CardText label="Verse Finder" title="Recite a few words. Find the verse.">
+      {/* The app's drifting colour fields, across the whole card */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[#fdfaf3]">
+        <div className="absolute -right-32 -top-36 h-[320px] w-[320px] rounded-full bg-[#F2D58A]/60 blur-3xl" />
+        <div className="absolute -left-28 top-1/3 h-[340px] w-[340px] rounded-full bg-[#9FDCC0]/55 blur-3xl" />
+        <div className="absolute -bottom-28 right-1/4 h-[300px] w-[360px] rounded-full bg-[#F6C9A8]/45 blur-3xl" />
+      </div>
+      <CardText label="Verse Finder" title="Recite a few words. Find the verse." className="relative">
         Tap the orb and recite. Manazil works out which verse it is and opens it. It asks before the first recording, and needs the internet.
       </CardText>
 
-      <div className="relative min-h-[300px] overflow-hidden rounded-[24px] bg-gradient-to-b from-[#fbf3e4] via-white to-[#e9f3ee] p-5 ring-1 ring-ink/5">
+      <div className="relative min-h-[300px]">
         <AnimatePresence mode="wait">
           {step < 3 ? (
             <motion.div
@@ -40,31 +48,31 @@ export function FinderCard() {
               transition={{ duration: 0.4 }}
               className="flex h-[260px] flex-col items-center justify-center"
             >
-              <div className="relative grid h-[130px] w-[130px] place-items-center">
+              <div className="relative grid h-[150px] w-[150px] place-items-center">
                 {step === 1 && (
                   <>
                     <motion.span
-                      className="absolute inset-0 rounded-full border border-gold-soft/60"
-                      animate={{ scale: [1, 1.7], opacity: [0.6, 0] }}
+                      className="absolute inset-[10px] rounded-full border border-gold-soft/60"
+                      animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
                       transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
                     />
                     <motion.span
-                      className="absolute inset-0 rounded-full border border-gold-soft/60"
-                      animate={{ scale: [1, 1.7], opacity: [0.6, 0] }}
+                      className="absolute inset-[10px] rounded-full border border-gold-soft/60"
+                      animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
                       transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut', delay: 0.8 }}
                     />
                   </>
                 )}
-                <motion.div
-                  animate={step === 1 ? { scale: [1, 1.07, 1] } : { scale: 1 }}
-                  transition={{ duration: 1.2, repeat: step === 1 ? Infinity : 0, ease: 'easeInOut' }}
-                  className="h-[104px] w-[104px] rounded-full"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 35% 28%, #fff 0%, #f3d99a 28%, #D4A030 62%, #0f2a24 130%)',
-                    boxShadow: '0 18px 40px -10px rgba(212,160,48,0.55), inset 0 -10px 24px rgba(8,28,24,0.25)',
-                  }}
-                />
+                <AppOrb energy={energy} size={150} />
+                <span className="pointer-events-none absolute inset-0 grid place-items-center">
+                  {step === 1 ? (
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="#B8791F" aria-hidden><rect x="6" y="6" width="12" height="12" rx="3" /></svg>
+                  ) : (
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="#2F5C4C" opacity={step === 2 ? 0.35 : 0.9} aria-hidden>
+                      <path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 1 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Zm6-3.5a1 1 0 1 0-2 0 4 4 0 0 1-8 0 1 1 0 1 0-2 0 6 6 0 0 0 5 5.9V19H9.5a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2H13v-2.1A6 6 0 0 0 18 11Z" />
+                    </svg>
+                  )}
+                </span>
               </div>
               <div className="mt-5 flex h-8 items-center gap-[5px]">
                 {bars.map((b, i) => (

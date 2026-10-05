@@ -1,13 +1,13 @@
 'use client';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-import { faqs } from './faq-data';
+import type { Faq } from '@/lib/content';
 
-export function FaqList() {
+export function FaqList({ items }: { items: Faq[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <div className="divide-y divide-ink/10 rounded-[28px] border border-ink/5 bg-white shadow-card">
-      {faqs.map((f, i) => {
+      {items.map((f, i) => {
         const isOpen = open === i;
         return (
           <div key={f.q}>

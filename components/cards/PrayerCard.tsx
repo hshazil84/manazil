@@ -49,8 +49,8 @@ export function PrayerCard() {
 
   return (
     <div className="card grid h-full gap-8 p-7 sm:p-9 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-      <CardText label="Prayer times" title="Every island, from the official tables.">
-        Pick your island and Manazil follows the Maldives prayer time tables. Or use your location.
+      <CardText label="Prayer times" title="The right times for your island.">
+        Choose your island and Manazil shows its prayer times from the Maldives Islamic Ministry tables. Or let it use your location.
       </CardText>
 
       <div className="rounded-[24px] bg-gradient-to-b from-[#cfe3f2]/70 via-white to-white p-5 ring-1 ring-ink/5">

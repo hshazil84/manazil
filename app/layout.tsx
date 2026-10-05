@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Nav } from '@/components/Nav';
-import { Footer } from '@/components/Footer';
-import { MotionProvider } from '@/components/MotionProvider';
 
 const sans = localFont({
   src: [
@@ -44,11 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${arabic.variable}`}>
       <body className="min-h-screen font-sans">
-        <MotionProvider>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
-        </MotionProvider>
+        {children}
       </body>
     </html>
   );

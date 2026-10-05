@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FaqList } from '@/components/FaqList';
-import { faqs } from '@/components/faq-data';
+import { getFaqs } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'FAQ' };
 
-export default function Faq() {
+export const revalidate = 60;
+
+export default async function Faq() {
+  const faqs = await getFaqs();
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -22,7 +25,7 @@ export default function Faq() {
         <Link href="/" className="text-[14px] font-medium text-mint hover:underline">← Manazil</Link>
         <h1 className="mt-5 font-serif text-[42px] leading-[1.05] tracking-tight sm:text-[56px]">Questions</h1>
         <div className="mt-8">
-          <FaqList />
+          <FaqList items={faqs} />
         </div>
       </div>
     </div>
