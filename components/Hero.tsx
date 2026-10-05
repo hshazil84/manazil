@@ -1,11 +1,13 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { StoreButtons } from './StoreButtons';
 import type { StoreLinks } from '@/lib/content';
 
-const ease = [0.22, 1, 0.36, 1] as const;
+/** CSS-driven entrance values: they start at first paint, with no wait for JavaScript. */
+const rise = (delay: number, duration: number, y: number, x = 0) =>
+  ({ '--rdelay': `${delay}s`, '--rd': `${duration}s`, '--ry': `${y}px`, '--rx': `${x}px` }) as React.CSSProperties;
 
 function Blob({ className }: { className: string }) {
   return <div aria-hidden className={`pointer-events-none absolute rounded-full blur-3xl ${className}`} />;
@@ -18,16 +20,6 @@ export function Hero({ links }: { links?: StoreLinks }) {
   const chipA = useTransform(scrollYProgress, [0, 1], [0, -130]);
   const chipB = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
-  // Start the phone's entrance only once its image has decoded. Starting while
-  // the image is still loading made it pop in halfway through the animation.
-  const [ready, setReady] = useState(false);
-  const phoneImg = useRef<HTMLImageElement>(null);
-  useEffect(() => {
-    if (phoneImg.current?.complete) setReady(true);
-    const t = setTimeout(() => setReady(true), 900); // never wait forever
-    return () => clearTimeout(t);
-  }, []);
-
   return (
     <section ref={ref} className="relative overflow-hidden pt-28 sm:pt-32">
       <Blob className="-left-40 top-0 h-[420px] w-[420px] bg-gold-light/25" />
@@ -39,38 +31,21 @@ export function Hero({ links }: { links?: StoreLinks }) {
 
       <div className="container-x relative grid items-center gap-10 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-6 lg:pb-28">
         <div className="max-w-xl">
-          <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0, ease }}
-            className="label"
-          >
+          <p className="rise label" style={rise(0, 0.4, 14)}>
             Made in Malé
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.05, ease }}
-            className="mt-4 font-serif text-[44px] leading-[1.04] tracking-tight sm:text-[58px] lg:text-[68px]"
+          </p>
+          <h1
+            className="rise mt-4 font-serif text-[44px] leading-[1.04] tracking-tight sm:text-[58px] lg:text-[68px]"
+            style={rise(0.05, 0.5, 14)}
           >
             The Quran, made for the Maldives.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.12, ease }}
-            className="mt-6 max-w-md text-[18px] leading-relaxed text-ink/65"
-          >
+          </h1>
+          <p className="rise mt-6 max-w-md text-[18px] leading-relaxed text-ink/65" style={rise(0.12, 0.5, 12)}>
             Read and listen to the Quran with Dhivehi and English translations. Prayer times for every island, a Qibla compass and gentle reminders. Free, with no account and no ads.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
-            className="mt-9"
-          >
+          </p>
+          <div className="rise mt-9" style={rise(0.2, 0.5, 12)}>
             <StoreButtons links={links} />
-          </motion.div>
+          </div>
         </div>
 
         <div className="relative mx-auto h-[580px] w-full max-w-[520px] sm:h-[720px] lg:h-[760px]">
@@ -82,19 +57,13 @@ export function Hero({ links }: { links?: StoreLinks }) {
             {/* Three separate layers so no two animations fight over the same property:
                 scroll parallax (outer) → entrance → idle float (inner). */}
             <motion.div style={{ y: phoneY, willChange: 'transform' }}>
-              <motion.div
-                initial={{ opacity: 0, y: 28 }}
-                animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-                transition={{ duration: 0.6, ease }}
-              >
+              <div className="rise" style={rise(0.08, 0.6, 28)}>
                 <motion.div
-                  animate={ready ? { y: [0, -10, 0] } : { y: 0 }}
-                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
                   style={{ willChange: 'transform' }}
                 >
                   <Image
-                    ref={phoneImg}
-                    onLoad={() => setReady(true)}
                     src="/img/onboarding_home.webp"
                     alt="Manazil Home screen showing the next prayer, the verse of the day and quick tiles"
                     width={800}
@@ -104,20 +73,18 @@ export function Hero({ links }: { links?: StoreLinks }) {
                     className="h-auto w-full"
                   />
                 </motion.div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
 
           {/* notification chip */}
           <motion.div
             style={{ y: chipA }}
-            initial={{ opacity: 0, x: -24 }}
-            animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: -24 }}
-            transition={{ duration: 0.5, delay: 0.3, ease }}
             className="absolute -left-1 top-[96px] z-10 w-[236px] sm:-left-6 sm:top-[130px] sm:w-[280px] lg:-left-14 lg:top-[64px]"
           >
+           <div className="rise" style={rise(0.3, 0.5, 0, -24)}>
             <motion.div
-              animate={ready ? { y: [0, 8, 0] } : { y: 0 }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
               className="glass rounded-[22px] p-3.5 shadow-float"
             >
@@ -134,18 +101,17 @@ export function Hero({ links }: { links?: StoreLinks }) {
                 Time to offer Maghrib in Malé City is 17:59
               </p>
             </motion.div>
+           </div>
           </motion.div>
 
           {/* qibla chip */}
           <motion.div
             style={{ y: chipB }}
-            initial={{ opacity: 0, x: 24 }}
-            animate={ready ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
-            transition={{ duration: 0.5, delay: 0.4, ease }}
             className="absolute -right-1 bottom-[120px] z-10 sm:-right-4 sm:bottom-[170px] lg:-right-10 lg:bottom-[190px]"
           >
+           <div className="rise" style={rise(0.4, 0.5, 0, 24)}>
             <motion.div
-              animate={ready ? { y: [0, -9, 0] } : { y: 0 }}
+              animate={{ y: [0, -9, 0] }}
               transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.6 }}
               className="glass flex items-center gap-3 rounded-[22px] py-3 pl-3 pr-5 shadow-float"
             >
@@ -155,6 +121,7 @@ export function Hero({ links }: { links?: StoreLinks }) {
                 <p className="text-[19px] font-bold leading-tight">301° WNW</p>
               </div>
             </motion.div>
+           </div>
           </motion.div>
         </div>
       </div>
