@@ -57,7 +57,7 @@ export function PrayerCard() {
         <p className="label">Next prayer</p>
         <div className="mt-2 flex items-end justify-between gap-3">
           <p className="text-[24px] font-bold">{prayers[nextIdx].name}</p>
-          <p className="font-serif text-[38px] leading-none tabular-nums">
+          <p className="clock font-serif text-[38px] leading-none">
             {secs === null ? '--:--:--' : `${h}:${pad(m)}:${pad(s)}`}
           </p>
         </div>

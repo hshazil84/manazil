@@ -57,3 +57,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .float { animation: none; }
 }
+
+/* Live numbers (countdowns, counters): fixed-width digits and no kerning, so the text never shifts sideways as it ticks. */
+.clock {
+  font-variant-numeric: tabular-nums;
+  font-kerning: none;
+  font-feature-settings: 'kern' 0, 'tnum';
+}
