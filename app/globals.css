@@ -44,3 +44,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: none; }
 }
+
+/* Idle float for the hero: transform-only, so it runs on the compositor and stays smooth while scrolling. */
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, var(--fy, -10px), 0); }
+}
+.float {
+  animation: float-y var(--fd, 6s) ease-in-out var(--fdelay, 0s) infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .float { animation: none; }
+}
