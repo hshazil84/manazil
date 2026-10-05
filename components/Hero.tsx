@@ -80,7 +80,7 @@ export function Hero({ links }: { links?: StoreLinks }) {
           {/* notification chip: sits below the greeting so the name stays readable */}
           <div className="absolute -left-1 top-[112px] z-10 w-[236px] sm:-left-6 sm:top-[170px] sm:w-[280px] lg:-left-14 lg:top-[190px]">
             <div className="rise" style={rise(0.3, 0.5, 0, -24)}>
-              <div className="float rounded-[22px] border border-white/80 bg-white/90 p-3.5 shadow-float backdrop-blur-md" style={float(8, 5, 1.4)}>
+              <div className="float rounded-[22px] border border-ink/5 bg-white p-3.5 shadow-float" style={float(8, 5, 1.4)}>
                 <div className="flex items-center gap-2 text-[11.5px] text-ink/50">
                   <span className="grid h-[18px] w-[18px] place-items-center overflow-hidden rounded-[5px]">
                     <Image src="/img/app-icon.png" alt="" width={18} height={18} />
@@ -100,7 +100,7 @@ export function Hero({ links }: { links?: StoreLinks }) {
           {/* qibla chip */}
           <div className="absolute -right-1 bottom-[120px] z-10 sm:-right-4 sm:bottom-[170px] lg:-right-10 lg:bottom-[190px]">
             <div className="rise" style={rise(0.4, 0.5, 0, 24)}>
-              <div className="float flex items-center gap-3 rounded-[22px] border border-white/80 bg-white/90 py-3 pl-3 pr-5 shadow-float backdrop-blur-md" style={float(-9, 5.5, 1.6)}>
+              <div className="float flex items-center gap-3 rounded-[22px] border border-ink/5 bg-white py-3 pl-3 pr-5 shadow-float" style={float(-9, 5.5, 1.6)}>
                 <Image src="/img/qibla_3d.png" alt="" width={46} height={52} className="h-[52px] w-auto" />
                 <div>
                   <p className="label !text-[10px]">Qibla</p>
