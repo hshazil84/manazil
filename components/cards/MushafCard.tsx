@@ -22,7 +22,7 @@ export function MushafCard() {
         </CardText>
 
         {/* working mini player, floating over the phone */}
-        <div className="w-full max-w-[19rem] rounded-[22px] bg-white/95 p-3.5 shadow-float ring-1 ring-ink/5 backdrop-blur sm:max-w-[27rem] lg:max-w-[31rem]">
+        <div className="mx-auto w-full rounded-[22px] bg-white/95 p-3.5 shadow-float ring-1 ring-ink/5 backdrop-blur sm:mx-0 sm:max-w-[27rem] lg:max-w-[31rem]">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setPlaying((p) => !p)}
