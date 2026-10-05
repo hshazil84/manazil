@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAdmin } from '@/components/admin/AdminGate';
-import { Badge, Btn, Empty, Field, PageHead, Panel, errText, inputCls, useToast } from '@/components/admin/ui';
+import { Badge, Btn, Empty, Field, PageHead, Panel, errText, inputCls, useToast, Select } from '@/components/admin/ui';
 import { DatePicker } from '@/components/admin/DatePicker';
 import { addDays, fmtDate, maleToday } from '@/lib/admin/time';
 import hadithData from '@/lib/admin/data/hadith.json';
@@ -168,7 +168,7 @@ export default function Daily() {
           <Field label="Pin a">
             <div className="flex rounded-xl bg-ink/5 p-1">
               {KINDS.map((k) => (
-                <button key={k.id} onClick={() => setKind(k.id)} className={`flex-1 rounded-lg py-1.5 text-[13.5px] font-semibold transition ${kind === k.id ? 'bg-white shadow-sm' : 'text-ink/55'}`}>{k.label}</button>
+                <button key={k.id} onClick={() => setKind(k.id)} className={`flex-1 rounded-lg py-2 text-[13.5px] font-semibold transition ${kind === k.id ? 'bg-white shadow-sm' : 'text-ink/55'}`}>{k.label}</button>
               ))}
             </div>
           </Field>
@@ -179,12 +179,12 @@ export default function Daily() {
             <>
               <div className="grid gap-4 sm:grid-cols-[1fr_140px]">
                 <Field label="Surah">
-                  <select className={inputCls} value={surah} onChange={(e) => { setSurah(Number(e.target.value)); setAyah(1); }}>
+                  <Select value={surah} onChange={(e) => { setSurah(Number(e.target.value)); setAyah(1); }}>
                     {surahs.map((s) => <option key={s.n} value={s.n}>{s.n}. {s.name} · {s.meaning}</option>)}
-                  </select>
+                  </Select>
                 </Field>
                 <Field label={`Verse (1–${maxAyah})`}>
-                  <input type="number" min={1} max={maxAyah} className={inputCls} value={ayah} onChange={(e) => setAyah(Number(e.target.value))} />
+                  <input type="number" min={1} max={maxAyah} className={`${inputCls} no-spin`} value={ayah} onChange={(e) => setAyah(Number(e.target.value))} />
                 </Field>
               </div>
               {ayah >= 1 && ayah <= maxAyah && <VersePreview surah={surah} ayah={ayah} />}
@@ -193,9 +193,9 @@ export default function Daily() {
           {kind === 'hadith' && (
             <>
               <Field label="Hadith" hint="From the app's built-in collection.">
-                <select className={inputCls} value={hid} onChange={(e) => setHid(e.target.value)}>
+                <Select value={hid} onChange={(e) => setHid(e.target.value)}>
                   {hadith.map((h) => <option key={h.id} value={h.id}>#{h.id} · {h.reference}{h.category !== 'general' ? ` · ${h.category}` : ''}</option>)}
-                </select>
+                </Select>
               </Field>
               {hd && (
                 <div className="rounded-xl bg-white p-4 ring-1 ring-ink/5">
@@ -210,14 +210,14 @@ export default function Daily() {
             <>
               <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
                 <Field label="Chapter of Hisnul Muslim">
-                  <select className={inputCls} value={chapter} onChange={(e) => { setChapter(Number(e.target.value)); setDIndex(0); }}>
+                  <Select value={chapter} onChange={(e) => { setChapter(Number(e.target.value)); setDIndex(0); }}>
                     {hisn.map((c) => <option key={c.id} value={c.id}>{c.id}. {c.title}</option>)}
-                  </select>
+                  </Select>
                 </Field>
                 <Field label="Dua">
-                  <select className={inputCls} value={dIndex} onChange={(e) => setDIndex(Number(e.target.value))}>
+                  <Select value={dIndex} onChange={(e) => setDIndex(Number(e.target.value))}>
                     {ch.duas.map((_, i) => <option key={i} value={i}>{i + 1} of {ch.duas.length}</option>)}
-                  </select>
+                  </Select>
                 </Field>
               </div>
               <div className="rounded-xl bg-white p-4 ring-1 ring-ink/5">

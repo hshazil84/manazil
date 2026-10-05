@@ -68,3 +68,7 @@ body {
 /* Scrolls as normal, but without the scrollbar. */
 .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Number field without the browser's up/down spinner. */
+.no-spin { -moz-appearance: textfield; appearance: textfield; }
+.no-spin::-webkit-outer-spin-button, .no-spin::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }

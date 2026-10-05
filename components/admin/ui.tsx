@@ -167,3 +167,17 @@ export function errText(e: unknown): string {
   if (/relation .* does not exist|schema cache/i.test(m)) return 'A table is missing. Run supabase/admin.sql in Supabase first.';
   return m;
 }
+
+/** A dropdown that is the same height, padding and shape as the text fields (browsers draw a bare <select> differently). */
+export function Select({ className = '', children, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
+  return (
+    <div className="relative">
+      <select {...props} className={`${inputCls} cursor-pointer appearance-none pr-10 ${className}`}>
+        {children}
+      </select>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-ink/40" aria-hidden>
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </div>
+  );
+}
