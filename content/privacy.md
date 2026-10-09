@@ -1,14 +1,14 @@
 # Manazil Privacy Policy
 
-Last updated: 4 October 2026
+Last updated: 9 October 2026
 
 ## Who we are
-Manazil is a Quran, prayer times and dhikr app, published by Hasan Shazil, Malé, Maldives. Contact: hshazil@gmail.com.
+Manazil is a Quran, prayer times and dhikr app, published by Hasan Shazil, M. Lansimooge, Malé, Maldives. Contact: hshazil@gmail.com.
 
 ## The short version
 - You do not need an account. Manazil never asks for your email or phone number.
 - Your saved verses, notes, reading activity, settings and location stay on your phone.
-- The only thing that leaves your phone is a recording, and only when you use Verse Finder.
+- The only thing Manazil sends from your phone is a recording, and only when you use Verse Finder.
 - There are no ads, no analytics and no tracking in Manazil, and we do not sell data.
 
 ## What stays on your phone
@@ -18,7 +18,7 @@ These are saved on your phone and are not sent to us:
 - Your saved verses, with any notes and collections you add, and your last-read verse.
 - Your weekly activity in Reflections: which days you read or listened, how many verses you read, minutes of recitation you listened to, and your dhikr counts. About a year of it is kept.
 - Your khatm plan, if you make one: the day you choose to finish by, and which verses you have read since you started it. It is kept until you stop the plan.
-- Your chosen island, prayer time settings, and your location coordinates if you choose "My location".
+- Your chosen island, prayer time settings, and your location coordinates and place name if you choose "Current location".
 - Which reminders you have switched on.
 
 Deleting the app deletes all of this.
@@ -37,12 +37,15 @@ Verse Finder listens to a few words of your recitation to find the verse.
 If you switch reminders on, Manazil asks your phone for permission to show notifications. Prayer times, adhkar and other reminders, including a gentle evening reading reminder that is skipped on days you have read, and, if you have a khatm plan, reminders about your daily portion, are scheduled on your phone, so they work without internet. We do not receive anything about which reminders you use or when they are shown.
 
 ## Location
-Manazil uses your location on your phone for the Qibla compass and, if you choose "My location" in Settings, to calculate prayer times. The coordinates are saved on your phone and are not sent to us.
+Manazil uses your location on your phone for the Qibla compass and, if you choose "Current location" in Settings, to calculate prayer times and show the name of your island or city on Home. The coordinates and the place name are saved on your phone and are not sent to us.
+
+To find the place name, Manazil first checks a list of Maldives islands and resorts stored in the app, which needs no internet. If your location is not on that list, your phone's own place lookup (Apple on iPhone, Google on Android) is asked for the name. That lookup is handled by Apple or Google under their own privacy policies. Manazil does not send your location to us.
 
 ## Other internet requests
 - Recitation audio is loaded from everyayah.com.
 - Mushaf page fonts are loaded from our storage on Supabase.
 - Messages for Eid and other special days are read from our database on Supabase when the app opens. The request carries no personal information.
+- The first day of each Hijri month, as announced in the Maldives, is read from our database on Supabase when the app opens. The request carries no personal information.
 
 Like any website, these servers can see your IP address and which file you asked for. We do not link this to who you are.
 
