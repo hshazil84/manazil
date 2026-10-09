@@ -20,6 +20,7 @@ type Phase = 'loading' | 'unconfigured' | 'signed-out' | 'not-admin' | 'ok';
 const nav = [
   { href: '/admin', label: 'Overview', icon: 'M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8Z' },
   { href: '/admin/occasions', label: 'Occasions', icon: 'M12 3a6 6 0 0 0-6 6v3l-1.5 3h15L18 12V9a6 6 0 0 0-6-6Zm-2 14a2 2 0 0 0 4 0' },
+  { href: '/admin/hijri', label: 'Hijri months', icon: 'M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z' },
   { href: '/admin/daily', label: 'Daily content', icon: 'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm0 5h15M9 2v4m6-4v4' },
   { href: '/admin/site', label: 'Site content', icon: 'M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0Zm0 0h18M12 3c2.5 2.4 3.8 5.6 3.8 9S14.5 18.6 12 21c-2.5-2.4-3.8-5.6-3.8-9S9.5 5.4 12 3Z' },
   { href: '/admin/finder', label: 'Verse Finder', icon: 'M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Zm-6 8a6 6 0 0 0 12 0m-6 6v4' },
